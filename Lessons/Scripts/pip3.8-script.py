@@ -1,4 +1,4 @@
-#!C:\Users\amahin\PycharmProjects\Selenium\venv\Scripts\python.exe
+#!C:\Users\amahin\PycharmProjects\Selenium\Lessons\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==19.0.3','console_scripts','pip3.8'
 __requires__ = 'pip==19.0.3'
 import re
