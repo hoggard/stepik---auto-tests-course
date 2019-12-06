@@ -13,8 +13,6 @@ try:
     input2.send_keys("Petrov")
     input3 = browser.find_element_by_css_selector("body div.first_block div.form-group.third_class input")
     input3.send_keys("petrov@mail.ru")
-    button = browser.find_element_by_css_selector("button.btn")
-    button.click()
 
     # Отправляем заполненную форму
     button = browser.find_element_by_css_selector("button.btn")
