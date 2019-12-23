@@ -3,6 +3,7 @@ from selenium import webdriver
 import time
 import math
 
+
 @pytest.fixture(scope="function")
 def browser():
     print("\nstart browser for test..")
@@ -15,11 +16,12 @@ def browser():
 def test_guest_should_see_login_link(browser, lesson):
     link = f"https://stepik.org/lesson/{lesson}/step/1"
     browser.get(link)
-    time.sleep(10)
-    answer = math.log(int(time.time()))
-    browser.find_element_by_id("ember1636").send_keys(answer)
-    browser.find_element_by_css_selector("#ember1480 div section div div.attempt__inner div.attempt__actions button.submit-submission").click()
-    assert WebDriverWait(browser, 15).until(
-        EC.text_to_be_present_in_element((By.CSS_SELECTOR, "#ember1603 pre"), "Correct!")
-    ) , "Тест из урока" 'lesson' "провален"
+    time.sleep(5)
+    answer = str(math.log(int(time.time())))
+    print(answer)
+    browser.find_element_by_tag_name("textarea").send_keys(answer)
+    browser.find_element_by_class_name("submit-submission").click()
+    time.sleep(5)
+    a = browser.find_element_by_class_name("smart-hints__hint").text()
+    assert a == "Correct!", "задание решено неверно"
     time.sleep(10)
