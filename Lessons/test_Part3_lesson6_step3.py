@@ -22,6 +22,8 @@ def test_guest_should_see_login_link(browser, lesson):
     browser.find_element_by_tag_name("textarea").send_keys(answer)
     browser.find_element_by_class_name("submit-submission").click()
     time.sleep(5)
-    a = browser.find_element_by_class_name("smart-hints__hint").text()
-    assert a == "Correct!", "задание решено неверно"
-    time.sleep(10)
+    check_text = browser.find_element_by_css_selector('.smart-hints__hint').text
+    try:
+        assert 'Correct!' == check_text
+    except AssertionError:
+        final += check_text  # собираем ответ про Сов с каждой ошибкой
